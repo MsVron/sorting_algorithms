@@ -4,6 +4,35 @@ int forward_pass(listint_t **list);
 int backward_pass(listint_t **list);
 
 /**
+ *swap_nodes - swaps two nodes in a doubly linked list
+ *@list: pointer to the list
+ *@a: node to swap
+ *@b: node to swap
+ */
+void swap_nodes(listint_t **list, listint_t *a, listint_t *b)
+{
+	listint_t *prev, *next;
+
+	prev = a->prev;
+	next = b->next;
+
+	if (prev)
+		prev->next = b;
+	if (next)
+		next->prev = a;
+
+	a->next = next;
+	b->prev = prev;
+
+	a->prev = b;
+	b->next = a;
+
+	if (!b->prev)
+		*
+		list = b;
+}
+
+/**
  *cocktail_sort_list - sorts a doubly linked list using cocktail sort
  *@list: pointer to head of list
  */
