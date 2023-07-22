@@ -1,3 +1,5 @@
+#include "sort.h"
+
 /**
  *print_array - print an array of integers
  *@array: array to print
