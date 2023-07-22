@@ -30,40 +30,72 @@ void swap_nodes(listint_t **list, listint_t *a, listint_t *b)
 }
 
 /**
- *cocktail_sort_list - sorts a doubly linked list of integers
- *in ascending order using the Cocktail shaker sort algorithm
- *@list: Pointer to the head of the list
- */
-/**
- *cocktail_sort_list - sorts a doubly linked list of integers
- *in ascending order using the Cocktail shaker sort algorithm
- *@list: Pointer to the head of the list
+ * cocktail_sort_list - sorts a doubly linked list using cocktail sort
+ * @list: pointer to head of list
  */
 void cocktail_sort_list(listint_t **list)
 {
-	char swapped = 1;
-	listint_t *current;
-	if (!list || !*list) return;
-	current = *list;
-	while (swapped) {
-		swapped = 0;
-		while (current->next) {
-			if (current->n > current->next->n) {
-				swap_nodes(list, current, current->next);
-				swapped = 1;
-				print_list((const listint_t *) *list);
-			}
-			else current = current->next;
-		}
-		if (!swapped) break;
-		swapped = 0;
-		while (current->prev) {
-			if (current->n < current->prev->n) {
-				swap_nodes(list, current->prev, current);
-				swapped = 1;
-				print_list((const listint_t *) *list);
-			}
-			else current = current->prev;
-		}
-	}
+    listint_t *temp;
+    int swapped = 1;
+
+    if (!list || !*list || !(*list)->next)
+        return;
+
+    temp = *list;
+
+    while (swapped)
+    {
+        swapped = forward_pass(&temp);
+        if (!swapped)
+            break;
+        swapped = backward_pass(&temp);
+    }
+}
+
+/**
+ * forward_pass - make a forward pass through the list
+ * @list: pointer to head of list
+ * Return: 1 if swap occurred, 0 otherwise
+ */
+int forward_pass(listint_t **list)
+{
+    int swapped = 0;
+
+    while ((*list)->next)
+    {
+        if ((*list)->n > (*list)->next->n)
+        {
+            swap_nodes(list, *list, (*list)->next);
+            print_list((const listint_t *) *list);
+            swapped = 1;
+        }
+        else
+            *list = (*list)->next;
+    }
+
+    return (swapped);
+}
+
+/**
+ * backward_pass - make a backward pass through the list
+ * @list: pointer to head of list
+ * Return: 1 if swap occurred, 0 otherwise
+ */
+int backward_pass(listint_t **list)
+{
+    int swapped = 0;
+
+    while ((*list)->prev)
+    {
+        if ((*list)->prev->n > (*list)->n)
+        {
+            swap_nodes(list, (*list)->prev, *list);
+            print_list((const listint_t *) *list);
+            swapped = 1;
+        }
+        else
+            *list = (*list)->prev;
+    }
+
+    return (swapped);
 }
