@@ -1,5 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "sort.h"
 
 /**
  *counting_sort - Sorts an array of integers in ascending
@@ -10,7 +9,7 @@
 void counting_sort(int *array, size_t size)
 {
 	int max = array[0];
-	int i, j, k = 0;
+	int i, k = 0;
 	int *count;
 
 	if (!array || size < 2)
