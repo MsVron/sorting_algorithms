@@ -1,5 +1,8 @@
 #include "sort.h"
 
+int forward_pass(listint_t **list);
+int backward_pass(listint_t **list);
+
 /**
  *swap_nodes - swaps two nodes in a doubly linked list
  *@list: pointer to the list
