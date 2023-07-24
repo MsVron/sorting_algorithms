@@ -28,8 +28,8 @@ int card_compare(const void *a, const void *b)
 {
 	deck_node_t *cardA = *(deck_node_t **) a;
 	deck_node_t *cardB = *(deck_node_t **) b;
-	int valueA = card_value((char*) cardA->card->value);
-	int valueB = card_value((char*) cardB->card->value);
+	int valueA = card_value((char *) cardA->card->value);
+	int valueB = card_value((char *) cardB->card->value);
 	int kindA = cardA->card->kind;
 	int kindB = cardB->card->kind;
 
@@ -54,7 +54,7 @@ void sort_deck(deck_node_t **deck)
 		current = current->next;
 	}
 
-	qsort(nodes, 52, sizeof(deck_node_t*), card_compare);
+	qsort(nodes, 52, sizeof(deck_node_t *), card_compare);
 
 	for (i = 0; i < 51; i++)
 	{
