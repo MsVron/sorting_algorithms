@@ -36,5 +36,6 @@ void bitonic_compare(int *array, size_t size, int start, int dir);
 void bitonic_merge(int *array, size_t size, size_t start, int dir, size_t total_size);
 void bitonic_sort_helper(int *array, size_t size, size_t start, int dir, size_t total_size);
 void bitonic_sort(int *array, size_t size);
+void quick_sort_hoare(int *array, size_t size);
 
 #endif /* SORT_H */
