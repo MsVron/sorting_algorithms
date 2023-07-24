@@ -10,7 +10,7 @@ void counting_sort(int *array, size_t size)
 {
 	int max = array[0];
 	int i = 0;
-	int *count;
+	int *count, *output;
 
 	if (!array || size < 2)
 		return;
@@ -46,8 +46,7 @@ void counting_sort(int *array, size_t size)
 	printf("\n");
 
 	/*Allocate memory for the output (sorted array) */
-	int *output;
-	*output = malloc(size* sizeof(int));
+	output = malloc(size * sizeof(int));
 	if (!output)
 	{
 		free(count);
