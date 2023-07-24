@@ -1,6 +1,10 @@
 #ifndef DECK_H
 #define DECK_H
 
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+
 /**
  *enum kind_e - Enumeration of card kinds
  *
@@ -49,5 +53,6 @@ typedef struct deck_node_s
 
 deck_node_t;
 
+void sort_deck(deck_node_t **deck);
 
 #endif /*DECK_H */
