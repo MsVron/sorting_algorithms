@@ -57,7 +57,7 @@ void hoare_sort(int *array, size_t size, int low, int high)
 	if (low < high)
 	{
 		pivot = hoare_partition(array, size, low, high);
-		hoare_sort(array, size, low, pivot);
+		hoare_sort(array, size, low, pivot - 1);
 		hoare_sort(array, size, pivot + 1, high);
 	}
 }
