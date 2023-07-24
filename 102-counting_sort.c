@@ -45,7 +45,7 @@ void counting_sort(int *array, size_t size)
 
 	printf("\n");
 
-	/*Allocate memory for the output (sorted array) */*
+	/*Allocate memory for the output (sorted array) */
 	int *output;
 	*output = malloc(size* sizeof(int));
 	if (!output)
