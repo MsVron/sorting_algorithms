@@ -1,6 +1,18 @@
 #include "sort.h"
 
 /**
+ *swap - swaps two integers in an array.
+ *@a: the first integer to be swapped.
+ *@b: the second integer to be swapped.
+ */
+void swap(int *a, int *b)
+{
+	int tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
+
+/**
  *sift_down - repair the heap whose root element is at index start
  *@array: array
  *@start: root index
