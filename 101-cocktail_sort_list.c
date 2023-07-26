@@ -63,7 +63,6 @@ void cocktail_sort_list(listint_t **list)
 int forward_pass(listint_t **list)
 {
 	int swapped = 0;
-
 	while ((*list)->next)
 	{
 		if ((*list)->n > (*list)->next->n)
@@ -71,9 +70,11 @@ int forward_pass(listint_t **list)
 			swap_nodes(list, *list, (*list)->next);
 			print_list((const listint_t *) *list);
 			swapped = 1;
+			if ((*list)->prev) /*Go back one step */
+				*
+				list = (*list)->prev;
 		}
-		else
-			*list = (*list)->next;
+		else *list = (*list)->next;
 	}
 
 	return (swapped);
@@ -95,9 +96,11 @@ int backward_pass(listint_t **list)
 			swap_nodes(list, (*list)->prev, *list);
 			print_list((const listint_t *) *list);
 			swapped = 1;
+			if ((*list)->next) /*Go forward one step */
+				*
+				list = (*list)->next;
 		}
-		else
-			*list = (*list)->prev;
+		else *list = (*list)->prev;
 	}
 
 	return (swapped);
