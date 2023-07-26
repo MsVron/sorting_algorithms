@@ -38,21 +38,25 @@ void swap_nodes(listint_t **list, listint_t *a, listint_t *b)
  */
 void cocktail_sort_list(listint_t **list)
 {
-	listint_t *temp;
+	listint_t * temp;
 	int swapped = 1;
 
-	if (!list || !*list || !(*list)->next)
+	if (!list || ! *list || !(*list)->next)
 		return;
-
-	temp = *list;
 
 	while (swapped)
 	{
-		swapped = forward_pass(&temp);
+		temp = *list; /*Save the original head pointer */
+
+		swapped = forward_pass(list);
 		if (!swapped)
 			break;
-		swapped = backward_pass(&temp);
+
+		*list = temp; /*Reset the head pointer before the backward pass */
+		swapped = backward_pass(list);
 	}
+
+	*list = temp; /*Reset the head pointer at the end */
 }
 
 /**
